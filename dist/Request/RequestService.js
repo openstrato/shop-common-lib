@@ -12,7 +12,9 @@ class RequestService {
      */
     populate(request) {
         const authTokenData = this.authService.getTokenDataFromAuthHeader(request.header('Authorization'));
-        request.user = authTokenData.user;
+        if (authTokenData) {
+            request.user = authTokenData.user;
+        }
         return request;
     }
 }

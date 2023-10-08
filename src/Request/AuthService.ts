@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+
 export class AuthService
 {
     getTokenDataFromAuthHeader(authHeader: string): any
