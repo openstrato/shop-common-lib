@@ -1,21 +1,21 @@
-import jwt from 'jsonwebtoken';
+import { verify } from 'jsonwebtoken'
 
 export class AuthService
 {
     getTokenDataFromAuthHeader(authHeader: string): any
     {
         if (!authHeader?.startsWith('Bearer ')) {
-            return undefined;
+            return undefined
         }
         
-        const tokenData = jwt.verify(
+        const tokenData = verify(
             authHeader.substring(7),
             process.env.INTERNAL_TOKEN_SECRET
         )
-    
+
         if (tokenData.scopes) {
             const scopes: string[] = tokenData.scopes.split(' ')
-            tokenData.user.scopes = scopes
+            tokenData.scopes = scopes
         }
 
         return tokenData

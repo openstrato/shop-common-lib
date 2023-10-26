@@ -14,9 +14,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "@types/jsonwebtoken": "^9.0.3"
   },
   "dependencies": {
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "typescript": "^5.2.2"
   }
 }

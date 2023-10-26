@@ -7,10 +7,10 @@ class AuthService {
         if (!(authHeader === null || authHeader === void 0 ? void 0 : authHeader.startsWith('Bearer '))) {
             return undefined;
         }
-        const tokenData = jsonwebtoken_1.default.verify(authHeader.substring(7), process.env.INTERNAL_TOKEN_SECRET);
+        const tokenData = (0, jsonwebtoken_1.verify)(authHeader.substring(7), process.env.INTERNAL_TOKEN_SECRET);
         if (tokenData.scopes) {
             const scopes = tokenData.scopes.split(' ');
-            tokenData.user.scopes = scopes;
+            tokenData.scopes = scopes;
         }
         return tokenData;
     }
