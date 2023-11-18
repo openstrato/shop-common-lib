@@ -1,3 +1,5 @@
 export declare class AuthService {
-    getTokenDataFromAuthHeader(authHeader: string): any;
+    getTokenDataFromRequest(request: any): any | undefined;
+    private getTokenDataFromAuthHeader;
+    private getTokenDataFromJwt;
 }

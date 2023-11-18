@@ -11,7 +11,7 @@ class RequestService {
      * - user with scopes
      */
     populate(request) {
-        const authTokenData = this.authService.getTokenDataFromAuthHeader(request.header('Authorization'));
+        const authTokenData = this.authService.getTokenDataFromRequest(request);
         if (authTokenData) {
             request.user = authTokenData;
         }

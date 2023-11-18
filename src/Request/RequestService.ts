@@ -14,7 +14,8 @@ export class RequestService
      */
     populate(request: any): any
     {
-        const authTokenData = this.authService.getTokenDataFromAuthHeader(request.header('Authorization'))
+        const authTokenData = this.authService.getTokenDataFromRequest(request)
+
         if (authTokenData) {
             request.user = authTokenData
         }
