@@ -1,7 +1,7 @@
 "use strict";
+// import { verify } from 'jsonwebtoken'
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
-const jsonwebtoken_1 = require("jsonwebtoken");
 class AuthService {
     getTokenDataFromRequest(request) {
         let tokenData = undefined;
@@ -22,7 +22,8 @@ class AuthService {
         return this.getTokenDataFromJwt(jwt);
     }
     getTokenDataFromJwt(jwt) {
-        const tokenData = (0, jsonwebtoken_1.verify)(jwt, process.env.INTERNAL_TOKEN_SECRET);
+        const jsonwebtoken = require('jsonwebtoken');
+        const tokenData = jsonwebtoken.verify(jwt, process.env.INTERNAL_TOKEN_SECRET);
         if (tokenData.scopes !== undefined) {
             const scopes = tokenData.scopes.split(' ');
             tokenData.scopes = scopes;

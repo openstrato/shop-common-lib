@@ -1,4 +1,4 @@
-import { verify } from 'jsonwebtoken'
+// import { verify } from 'jsonwebtoken'
 
 export class AuthService
 {
@@ -28,7 +28,9 @@ export class AuthService
 
     private getTokenDataFromJwt(jwt: string): any
     {
-        const tokenData: any = verify(
+        const jsonwebtoken = require('jsonwebtoken')
+
+        const tokenData: any = jsonwebtoken.verify(
             jwt,
             process.env.INTERNAL_TOKEN_SECRET
         )
