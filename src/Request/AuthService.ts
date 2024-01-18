@@ -28,6 +28,7 @@ export class AuthService
 
     private getTokenDataFromJwt(jwt: string): any
     {
+        // testing 1
         const jsonwebtoken = require('jsonwebtoken')
 
         const tokenData: any = jsonwebtoken.verify(
