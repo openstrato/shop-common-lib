@@ -22,7 +22,7 @@ class AuthService {
         return this.getTokenDataFromJwt(jwt);
     }
     getTokenDataFromJwt(jwt) {
-        // testing 1
+        console.log('testing 1');
         const jsonwebtoken = require('jsonwebtoken');
         const tokenData = jsonwebtoken.verify(jwt, process.env.INTERNAL_TOKEN_SECRET);
         if (tokenData.scopes !== undefined) {
