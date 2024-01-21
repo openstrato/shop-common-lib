@@ -1,7 +1,9 @@
+import { GuardService } from "./ScopesGuard/GuardService";
 import { RequestService } from "./Request/RequestService";
 
-export function commonLib() {
-    const requestService = new RequestService();    
+export function commonLib()
+{
+    const requestService = new RequestService()
 
     const commonLib = {
         request: requestService,
@@ -10,6 +12,9 @@ export function commonLib() {
     return commonLib;
 }
 
-export {
-    RequestService
+export function scopesGuard(requiredScopes: string[])
+{
+    const guardService = new GuardService(requiredScopes)
+
+    return guardService
 }

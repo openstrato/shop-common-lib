@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RequestService = exports.commonLib = void 0;
+exports.scopesGuard = exports.commonLib = void 0;
+const GuardService_1 = require("./ScopesGuard/GuardService");
 const RequestService_1 = require("./Request/RequestService");
-Object.defineProperty(exports, "RequestService", { enumerable: true, get: function () { return RequestService_1.RequestService; } });
 function commonLib() {
     const requestService = new RequestService_1.RequestService();
     const commonLib = {
@@ -11,3 +11,8 @@ function commonLib() {
     return commonLib;
 }
 exports.commonLib = commonLib;
+function scopesGuard(requiredScopes) {
+    const guardService = new GuardService_1.GuardService(requiredScopes);
+    return guardService;
+}
+exports.scopesGuard = scopesGuard;
