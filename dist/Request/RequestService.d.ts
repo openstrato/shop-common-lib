@@ -1,5 +1,6 @@
 export declare class RequestService {
     private authService;
+    private channelTokenService;
     constructor();
     /**
      * Populates a request with additional info:

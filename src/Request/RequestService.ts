@@ -1,11 +1,15 @@
 import { AuthService } from "./AuthService";
+import { ChannelTokenService } from "./ChannelTokenService";
 
 export class RequestService
 {
     private authService: AuthService;
 
+    private channelTokenService: ChannelTokenService;
+
     constructor() {
         this.authService = new AuthService()
+        this.channelTokenService = new ChannelTokenService()
     }
 
     /**
@@ -18,6 +22,12 @@ export class RequestService
 
         if (authTokenData) {
             request.user = authTokenData
+        }
+
+        const channelData = this.channelTokenService.getTokenDataFromRequest(request)
+
+        if (channelData) {
+            request.channel = channelData
         }
 
         return request

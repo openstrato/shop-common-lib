@@ -9,7 +9,7 @@ export class AuthService
 
         if (authHeader !== undefined) {
             tokenData = this.getTokenDataFromAuthHeader(authHeader)
-        } else if (request.cookies.jwt !== undefined) {
+        } else if (request.cookies?.jwt !== undefined) {
             tokenData = this.getTokenDataFromJwt(request.cookies.jwt)
         }
 

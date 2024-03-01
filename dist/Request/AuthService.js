@@ -4,12 +4,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 class AuthService {
     getTokenDataFromRequest(request) {
+        var _a;
         let tokenData = undefined;
         const authHeader = request.header('Authorization');
         if (authHeader !== undefined) {
             tokenData = this.getTokenDataFromAuthHeader(authHeader);
         }
-        else if (request.cookies.jwt !== undefined) {
+        else if (((_a = request.cookies) === null || _a === void 0 ? void 0 : _a.jwt) !== undefined) {
             tokenData = this.getTokenDataFromJwt(request.cookies.jwt);
         }
         return tokenData;
