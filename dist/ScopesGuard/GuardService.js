@@ -18,13 +18,16 @@ class GuardService {
             next();
         };
         this.ensureAtLeastOne = (req, res, next) => {
-            const userScopesMap = this.getScopesMap(req.user.scopes);
-            if (userScopesMap['admin']) {
+            var _a, _b, _c, _d;
+            const userScopes = (_b = (_a = req.user) === null || _a === void 0 ? void 0 : _a.scopes) !== null && _b !== void 0 ? _b : [];
+            const channelScopes = (_d = (_c = req.channel) === null || _c === void 0 ? void 0 : _c.scopes) !== null && _d !== void 0 ? _d : [];
+            const scopesMap = this.getScopesMap([...userScopes, ...channelScopes]);
+            if (scopesMap['admin']) {
                 next();
                 return;
             }
             for (const requiredScope of this.requiredScopes) {
-                if (userScopesMap[requiredScope]) {
+                if (scopesMap[requiredScope]) {
                     next();
                     return;
                 }

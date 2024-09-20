@@ -29,15 +29,17 @@ export class GuardService
 
     ensureAtLeastOne = (req, res, next) =>
     {
-        const userScopesMap = this.getScopesMap(req.user.scopes)
+        const userScopes = req.user?.scopes ?? []
+        const channelScopes = req.channel?.scopes ?? []
+        const scopesMap = this.getScopesMap([...userScopes, ...channelScopes])
 
-        if (userScopesMap['admin']) {
+        if (scopesMap['admin']) {
             next()
             return
         }
 
         for (const requiredScope of this.requiredScopes) {
-            if (userScopesMap[requiredScope]) {
+            if (scopesMap[requiredScope]) {
                 next()
                 return
             }
