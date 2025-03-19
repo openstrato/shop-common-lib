@@ -14,11 +14,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.5"
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/redis": "^4.0.11"
   },
   "dependencies": {
     "@nats-io/transport-node": "^3.0.0-35",
     "jsonwebtoken": "^9.0.2",
+    "redis": "^4.7.0",
     "typescript": "^5.2.2",
     "uuid": "^9.0.1"
   }

@@ -2,6 +2,8 @@ import { GuardService } from "./ScopesGuard/GuardService";
 import { RequestService } from "./Request/RequestService";
 import { ResponseService } from "./Response/ResponseService";
 import EventBusService from "./EventBus/services/EventBusService";
+import RedisService from "./Cache/infra/RedisService";
+import CacheServiceInterface from "./Cache/interfaces/CacheServiceInterface";
 
 export function commonLib()
 {
@@ -10,10 +12,13 @@ export function commonLib()
 
     const eventBus = new EventBusService()
 
+    const cacheService: CacheServiceInterface = new RedisService()
+
     const commonLib = {
         request: requestService,
         response: responseService,
         eventBus: eventBus,
+        cache: cacheService,
     }
 
     return commonLib;
