@@ -9,7 +9,7 @@ class SessionResponseService {
                 signed: true,
                 httpOnly: true,
                 sameSite: true,
-                secure: true,
+                // secure: true, // TODO: consider using secure cookies once prod env is set up with HTTPS (otherwise this will not work)
                 maxAge: 3600 * 1000,
                 // domain: 'carts.shop.localhost',
                 path: '/',
