@@ -13,15 +13,12 @@ const redis_1 = require("redis");
 class RedisService {
     ensureConnected() {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('connecting... ' + process.env.CACHE_SERVER_URL);
             if (!this.client) {
-                console.log('creating client...');
                 this.client = (0, redis_1.createClient)({
                     url: process.env.CACHE_SERVER_URL,
                 });
             }
             if (!this.client.isOpen) {
-                console.log('connecting client...');
                 yield this.client.connect();
             }
         });
@@ -30,13 +27,11 @@ class RedisService {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.ensureConnected();
             if (expirationInSeconds) {
-                console.log('setting expiring... ' + key + '...' + JSON.stringify(value));
                 yield this.client.set(key, JSON.stringify(value), {
                     EX: expirationInSeconds,
                 });
             }
             else {
-                console.log('setting... ' + key + '...' + JSON.stringify(value));
                 yield this.client.set(key, JSON.stringify(value));
             }
         });

@@ -6,19 +6,13 @@ export default class RedisService implements CacheServiceInterface
     private client?: RedisClientType;
 
     private async ensureConnected(): Promise<void> {
-        console.log('connecting... ' + process.env.CACHE_SERVER_URL);
-        
         if (!this.client) {
-            console.log('creating client...');
-            
             this.client = createClient({
                 url: process.env.CACHE_SERVER_URL,
             });
         }
 
         if (!this.client.isOpen) {
-            console.log('connecting client...');
-            
             await this.client.connect();
         }
     }
@@ -26,14 +20,10 @@ export default class RedisService implements CacheServiceInterface
     async set(key: string, value: any, expirationInSeconds?: number): Promise<void> {
         await this.ensureConnected();
         if (expirationInSeconds) {
-            console.log('setting expiring... ' + key + '...' + JSON.stringify(value));
-            
             await this.client.set(key, JSON.stringify(value), {
                 EX: expirationInSeconds,
             });
         } else {
-            console.log('setting... ' + key + '...' + JSON.stringify(value));
-            
             await this.client.set(key, JSON.stringify(value));
         }
     }
