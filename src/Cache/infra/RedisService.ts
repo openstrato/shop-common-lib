@@ -28,6 +28,23 @@ export default class RedisService implements CacheServiceInterface
         }
     }
 
+    async incrementAndGetCounter(key: string, incrementBy: number = 1, expirationInSecond?: number): Promise<number>
+    {
+        await this.ensureConnected();
+
+        if (!expirationInSecond) {
+            return await this.client.incrBy(key, incrementBy)
+        }
+
+        const pipeline = this.client.multi()
+        pipeline.incrBy(key, incrementBy)
+        pipeline.expire(key, expirationInSecond)
+        const results = await pipeline.exec()
+        const updatedCount = results[0]
+
+        return updatedCount as number
+    }
+
     async get<T>(key: string): Promise<T | null> {
         await this.ensureConnected();
         const value = await this.client.get(key);
