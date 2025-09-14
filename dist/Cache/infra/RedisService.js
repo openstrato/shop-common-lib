@@ -37,14 +37,14 @@ class RedisService {
         });
     }
     incrementAndGetCounter(key_1) {
-        return __awaiter(this, arguments, void 0, function* (key, incrementBy = 1, expirationInSecond) {
+        return __awaiter(this, arguments, void 0, function* (key, incrementBy = 1, expirationInSeconds) {
             yield this.ensureConnected();
-            if (!expirationInSecond) {
+            if (!expirationInSeconds) {
                 return yield this.client.incrBy(key, incrementBy);
             }
             const pipeline = this.client.multi();
             pipeline.incrBy(key, incrementBy);
-            pipeline.expire(key, expirationInSecond);
+            pipeline.expire(key, expirationInSeconds);
             const results = yield pipeline.exec();
             const updatedCount = results[0];
             return updatedCount;
