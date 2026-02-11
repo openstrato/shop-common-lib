@@ -5,4 +5,5 @@ var EventEnum;
 (function (EventEnum) {
     EventEnum["ORDER_CREATED"] = "order.created";
     EventEnum["ORDER_CONFIRMED"] = "order.confirmed";
+    EventEnum["ORGANIZATION_DELETED"] = "organization.deleted";
 })(EventEnum || (exports.EventEnum = EventEnum = {}));
