@@ -4,6 +4,7 @@ import { ResponseService } from "./Response/ResponseService";
 import EventBusService from "./EventBus/services/EventBusService";
 import RedisService from "./Cache/infra/RedisService";
 import CacheServiceInterface from "./Cache/interfaces/CacheServiceInterface";
+import { RateLimitService } from "./RateLimit/services/RateLimitService";
 
 export function commonLib()
 {
@@ -29,4 +30,14 @@ export function scopesGuard(requiredScopes: string[])
     const guardService = new GuardService(requiredScopes)
 
     return guardService
+}
+
+export function rateLimiter(
+    keyPrefix: string,
+    maxRequests: number,
+    windowSeconds: number,
+    options: { keyResolver: (req) => string, skip?: (req) => boolean },
+)
+{
+    return new RateLimitService(keyPrefix, maxRequests, windowSeconds, options)
 }
