@@ -4,6 +4,7 @@ import { ResponseService } from "./Response/ResponseService";
 import EventBusService from "./EventBus/services/EventBusService";
 import CacheServiceInterface from "./Cache/interfaces/CacheServiceInterface";
 import { RateLimitService } from "./RateLimit/services/RateLimitService";
+export { AudienceEnum } from "./Auth/enums/AudienceEnum";
 export declare function commonLib(): {
     request: RequestService;
     response: ResponseService;
