@@ -16,7 +16,13 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.5",
-    "@types/redis": "^4.0.11"
+    "@types/redis": "^4.0.11",
+    "class-transformer": "^0.5.1",
+    "reflect-metadata": "^0.2.2"
+  },
+  "peerDependencies": {
+    "class-transformer": "^0.5.1",
+    "reflect-metadata": "^0.2.2"
   },
   "dependencies": {
     "@nats-io/transport-node": "^3.0.0-35",

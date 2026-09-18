@@ -7,6 +7,7 @@ import CacheServiceInterface from "./Cache/interfaces/CacheServiceInterface";
 import { RateLimitService } from "./RateLimit/services/RateLimitService";
 
 export { AudienceEnum } from "./Auth/enums/AudienceEnum";
+export { SchemaIntrospectionService, FieldSchemaEntry } from "./SchemaIntrospectionService/SchemaIntrospectionService";
 
 export function commonLib()
 {

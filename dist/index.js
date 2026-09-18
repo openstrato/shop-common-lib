@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AudienceEnum = void 0;
+exports.SchemaIntrospectionService = exports.AudienceEnum = void 0;
 exports.commonLib = commonLib;
 exports.scopesGuard = scopesGuard;
 exports.rateLimiter = rateLimiter;
@@ -12,6 +12,8 @@ const RedisService_1 = require("./Cache/infra/RedisService");
 const RateLimitService_1 = require("./RateLimit/services/RateLimitService");
 var AudienceEnum_1 = require("./Auth/enums/AudienceEnum");
 Object.defineProperty(exports, "AudienceEnum", { enumerable: true, get: function () { return AudienceEnum_1.AudienceEnum; } });
+var SchemaIntrospectionService_1 = require("./SchemaIntrospectionService/SchemaIntrospectionService");
+Object.defineProperty(exports, "SchemaIntrospectionService", { enumerable: true, get: function () { return SchemaIntrospectionService_1.SchemaIntrospectionService; } });
 function commonLib() {
     const requestService = new RequestService_1.RequestService();
     const responseService = new ResponseService_1.ResponseService();
