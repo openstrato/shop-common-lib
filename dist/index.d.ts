@@ -1,4 +1,5 @@
 import { GuardService } from "./ScopesGuard/GuardService";
+import { AudienceGuardService } from "./AudienceGuard/AudienceGuardService";
 import { RequestService } from "./Request/RequestService";
 import { ResponseService } from "./Response/ResponseService";
 import EventBusService from "./EventBus/services/EventBusService";
@@ -13,6 +14,7 @@ export declare function commonLib(): {
     cache: CacheServiceInterface;
 };
 export declare function scopesGuard(requiredScopes: string[]): GuardService;
+export declare function audienceGuard(allowedAudiences: string | string[]): AudienceGuardService;
 export declare function rateLimiter(keyPrefix: string, maxRequests: number, windowSeconds: number, options: {
     keyResolver: (req: any) => string;
     skip?: (req: any) => boolean;

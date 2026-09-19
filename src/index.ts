@@ -1,4 +1,5 @@
 import { GuardService } from "./ScopesGuard/GuardService";
+import { AudienceGuardService } from "./AudienceGuard/AudienceGuardService";
 import { RequestService } from "./Request/RequestService";
 import { ResponseService } from "./Response/ResponseService";
 import EventBusService from "./EventBus/services/EventBusService";
@@ -33,6 +34,15 @@ export function scopesGuard(requiredScopes: string[])
     const guardService = new GuardService(requiredScopes)
 
     return guardService
+}
+
+export function audienceGuard(allowedAudiences: string | string[])
+{
+    const audienceGuardService = new AudienceGuardService(
+        Array.isArray(allowedAudiences) ? allowedAudiences : [allowedAudiences]
+    )
+
+    return audienceGuardService
 }
 
 export function rateLimiter(
