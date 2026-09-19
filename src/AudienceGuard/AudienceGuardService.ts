@@ -4,10 +4,10 @@ export class AudienceGuardService
         private allowedAudiences: string[]
     ) {}
 
-    // Route-level guard, unlike scopesGuard/populate(): a request with no token stays
-    // untouched (public routes remain public), this only rejects a token that IS present
+    // Name says it: only enforced if a token is present. A request with no token stays
+    // untouched (public routes remain public) - this only rejects a token that IS present
     // but wasn't minted for one of the allowed audiences.
-    ensure = (req, res, next) =>
+    ensureIfPresent = (req, res, next) =>
     {
         if (req.user?.aud === undefined) {
             next()

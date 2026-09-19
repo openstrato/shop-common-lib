@@ -4,10 +4,10 @@ exports.AudienceGuardService = void 0;
 class AudienceGuardService {
     constructor(allowedAudiences) {
         this.allowedAudiences = allowedAudiences;
-        // Route-level guard, unlike scopesGuard/populate(): a request with no token stays
-        // untouched (public routes remain public), this only rejects a token that IS present
+        // Name says it: only enforced if a token is present. A request with no token stays
+        // untouched (public routes remain public) - this only rejects a token that IS present
         // but wasn't minted for one of the allowed audiences.
-        this.ensure = (req, res, next) => {
+        this.ensureIfPresent = (req, res, next) => {
             var _a;
             if (((_a = req.user) === null || _a === void 0 ? void 0 : _a.aud) === undefined) {
                 next();
