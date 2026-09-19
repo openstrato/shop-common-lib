@@ -3,8 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SchemaIntrospectionService = exports.AudienceEnum = void 0;
 exports.commonLib = commonLib;
 exports.scopesGuard = scopesGuard;
+exports.audienceGuard = audienceGuard;
 exports.rateLimiter = rateLimiter;
 const GuardService_1 = require("./ScopesGuard/GuardService");
+const AudienceGuardService_1 = require("./AudienceGuard/AudienceGuardService");
 const RequestService_1 = require("./Request/RequestService");
 const ResponseService_1 = require("./Response/ResponseService");
 const EventBusService_1 = require("./EventBus/services/EventBusService");
@@ -30,6 +32,10 @@ function commonLib() {
 function scopesGuard(requiredScopes) {
     const guardService = new GuardService_1.GuardService(requiredScopes);
     return guardService;
+}
+function audienceGuard(allowedAudiences) {
+    const audienceGuardService = new AudienceGuardService_1.AudienceGuardService(Array.isArray(allowedAudiences) ? allowedAudiences : [allowedAudiences]);
+    return audienceGuardService;
 }
 function rateLimiter(keyPrefix, maxRequests, windowSeconds, options) {
     return new RateLimitService_1.RateLimitService(keyPrefix, maxRequests, windowSeconds, options);
