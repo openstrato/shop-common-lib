@@ -4,5 +4,6 @@ export declare enum AudienceEnum {
     ProductApi = "product-api",
     PaymentApi = "payment-api",
     CartApi = "cart-api",
-    AuthApi = "auth-api"
+    AuthApi = "auth-api",
+    ShopApi = "shop-api"
 }

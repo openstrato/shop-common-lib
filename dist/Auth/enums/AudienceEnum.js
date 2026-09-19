@@ -9,4 +9,5 @@ var AudienceEnum;
     AudienceEnum["PaymentApi"] = "payment-api";
     AudienceEnum["CartApi"] = "cart-api";
     AudienceEnum["AuthApi"] = "auth-api";
+    AudienceEnum["ShopApi"] = "shop-api";
 })(AudienceEnum || (exports.AudienceEnum = AudienceEnum = {}));

@@ -6,4 +6,5 @@ export enum AudienceEnum
     PaymentApi = "payment-api",
     CartApi = "cart-api",
     AuthApi = "auth-api",
+    ShopApi = "shop-api",
 }
