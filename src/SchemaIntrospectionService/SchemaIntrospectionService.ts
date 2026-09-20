@@ -58,7 +58,7 @@ export class SchemaIntrospectionService
     filterByScopes(entries: FieldSchemaEntry[], scopes: string[]): FieldSchemaEntry[]
     {
         return entries
-            .filter(entry => entry.groups.some(group => scopes.includes(group)))
+            .filter(entry => entry.groups.length === 0 || entry.groups.some(group => scopes.includes(group)))
             .map(entry => entry.nested
                 ? { ...entry, nested: this.filterByScopes(entry.nested, scopes) }
                 : entry
