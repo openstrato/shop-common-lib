@@ -41,7 +41,7 @@ class SchemaIntrospectionService {
     }
     filterByScopes(entries, scopes) {
         return entries
-            .filter(entry => entry.groups.some(group => scopes.includes(group)))
+            .filter(entry => entry.groups.length === 0 || entry.groups.some(group => scopes.includes(group)))
             .map(entry => entry.nested
             ? Object.assign(Object.assign({}, entry), { nested: this.filterByScopes(entry.nested, scopes) }) : entry);
     }
